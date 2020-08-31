@@ -20,8 +20,10 @@ public class Course
      * Returns the number of assignments in the course
      */
     public int getNumAssignments ()
-    {
-        return numAssignments;
+    {	if(numAssignments < 1) {
+        return -1;   } 
+    return numAssignments; 
+    
     }
     
     /**
@@ -79,7 +81,7 @@ public class Course
             return false;
         
         int [] studentGrades = grades.get(name);
-        studentGrades[assignmentNumber-1] = grade;
+        studentGrades[assignmentNumber] = grade; // should be assignmentNumber, not assignmentNUmber-1
         return true;
     }
     
