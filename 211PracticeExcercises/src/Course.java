@@ -76,7 +76,7 @@ public class Course {
 
 		int[] studentGrades = grades.get(name);
 		studentGrades[assignmentNumber] = grade; // should be assignmentNumber, not assignmentNUmber-1
-		return true;
+		return true; 
 	}
 
 	/**
