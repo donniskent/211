@@ -16,13 +16,11 @@ public class TwoPlayerController {
 		//create view
 		IsolaBoard board = new IsolaBoard();
 		IsolaTextView view = new IsolaTextView(board);
-		
-		
-		
 		int counter = 0;
+		Scanner scan = new Scanner(System.in);
 		ArrayList<String> inputHold = new ArrayList<String>();
 		System.out.println("-------Welcome to IsolaBoard-----------");
-		 while (true) {
+		while (true) {
 			
 			BoardPosition player1 = board.findPosition(BoardSpace.Player1);
 			BoardPosition player2 = board.findPosition(BoardSpace.Player2);
@@ -43,10 +41,9 @@ public class TwoPlayerController {
 			int col = currentPosition.getColumn();
 			BoardPosition newPosition = null;
 
-	 		Scanner scan = new Scanner(System.in);
+	 		
 			String input = scan.next();
-			// ask player for move with scanner
-			// store input in string "input"
+			
 
 			if (counter % 2 == 0) {
 				currentPosition = player1;
@@ -116,38 +113,18 @@ public class TwoPlayerController {
 			BoardSpace over = board.checkWinner();
 			boolean end = checkGameOver(over, view);
 			if (!end) {
+				scan.close();
 				break;
 			}
 
-			/*
-			 * if (over == BoardSpace.Player1) { view.display();
-			 * 
-			 * System.out.println("Player1 wins!"); System.out.println(inputHold);
-			 * 
-			 * 
-			 * game = false; } else if (over == BoardSpace.Player2) { view.display();
-			 * 
-			 * System.out.println("Player2 wins!"); System.out.println(inputHold);
-			 * 
-			 * 
-			 * 
-			 * game = false; } else if (over == BoardSpace.Available) { continue;
-			 * 
-			 * }
-			 */
+			
 
 		} // loop
 		
 		writeFile(inputHold);
 	} // go
 
-	// display board
-	// ask current player for move
-	// write move to output.dat
-	// make move
-	// switch player }
-	// display board
-	// close output.dat
+	
 
 	public int moveNorth(int row) {
 
@@ -214,4 +191,3 @@ public class TwoPlayerController {
 		 return true;
 	}
 }
-// check check

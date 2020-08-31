@@ -11,22 +11,20 @@ public class ReplayController {
 
 	public void go() {
 
-		// open output.dat
-		// create board
+		
 		IsolaBoard replayBoard = new IsolaBoard();
 		IsolaTextView replayView = new IsolaTextView(replayBoard);
 
-		// create text view
+		
 		int counter = 0;
 		ArrayList<String> moves = readMovesIn();
-		
 		System.out.println(" Game Start ");
-		BoardSpace currentPlayer = null;
+		BoardSpace currentPlayer = BoardSpace.Player1;
 		BoardPosition currentPosition;
 		replayView.display();
 		System.out.println(" Board Start ");
 		for (int i = 0; i < moves.size(); i++) {
-			//replayView.display();
+			
 			String input = moves.get(i);
 
 			BoardPosition player1 = replayBoard.findPosition(BoardSpace.Player1);
@@ -40,14 +38,13 @@ public class ReplayController {
 				currentPlayer = BoardSpace.Player2;
 
 			}
-			// System.out.println(currentPlayer + (" move:"));
+			
 
 			int row = currentPosition.getRow();
 			int col = currentPosition.getColumn();
 			BoardPosition newPosition = null;
 
-			// ask player for move with scanner
-			// store input in string "input"
+			
 
 			if (counter % 2 == 0) {
 				currentPosition = player1;
@@ -57,7 +54,7 @@ public class ReplayController {
 				currentPlayer = BoardSpace.Player2;
 
 			}
-			// String input = moves.substring(counter, counter+1);
+			
 
 			if (input.equals("N")) {
 
@@ -100,20 +97,16 @@ public class ReplayController {
 			newPosition = new BoardPosition(row, col);
 
 			replayBoard.movePlayer(currentPlayer, newPosition);
-		//	replayView.display();
-
-		//	System.out.println(currentPlayer + " moved " + input);
-		//	counter++;
-
+		
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
-				// This should never happen
+				
 			}
-			//System.out.println(currentPlayer + " moved " + input);
+			
 			
 			System.out.println("                          ");
-			//System.out.println(currentPlayer + " moved " + input);
+			
 			replayView.display();
 			counter++;
 			System.out.println(currentPlayer + " moved " + input);
@@ -128,16 +121,7 @@ public class ReplayController {
 	
 	} // go
 
-	// while game is not over {
-	// display board
-	// read player move from output.dat
-	// make move on board
-	// switch to next player
-	//
-	// delay 1 second }
-
-	// display final board
-	//
+	
 
 	public ArrayList<String> readMovesIn() {
 		File file = new File("output.dat");
