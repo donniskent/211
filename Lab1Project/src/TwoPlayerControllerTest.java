@@ -3,33 +3,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class TwoPlayerControllerTest {
-
-	@Test
-	void goTest() {
-		TwoPlayerController controller = new TwoPlayerController(); 
-		IsolaBoard board = new IsolaBoard();
-		IsolaTextView view = new IsolaTextView(board);
-		int counter = 0;
-		
-		
-		
-		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@Test

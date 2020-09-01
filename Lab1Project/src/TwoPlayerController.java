@@ -155,7 +155,7 @@ public class TwoPlayerController {
 	}
 
 	public void writeFile(ArrayList<String> direction) {
-		File newFile = new File("output.dat");
+		File newFile = new File("game.dat");
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter(newFile);

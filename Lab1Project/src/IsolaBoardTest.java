@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class IsolaBoardTest {
 
 	@Test
-	void testIsolaBoardConstrcutor() {
+	void testIsolaBoardConstructor() {
 		IsolaBoard board = new IsolaBoard();
 		if (board.getHeight() != 7 && board.getWidth() != 7) {
 			fail("Expected height to be 7 got " + board.getHeight() + ". Expected width to be 7 got "
@@ -44,7 +44,6 @@ class IsolaBoardTest {
 		IsolaBoard board = new IsolaBoard();
 		BoardSpace firstPlayer = BoardSpace.Player1;
 		BoardPosition newPosition = new BoardPosition(1, 3);
-		BoardPosition player1 = board.findPosition(firstPlayer);
 		if (board.movePlayer(BoardSpace.Player1, newPosition) == false) {
 			fail("Expected true, got " + board.movePlayer(BoardSpace.Player1, newPosition));
 		}
@@ -127,7 +126,7 @@ class IsolaBoardTest {
 		board4.movePlayer(firstPlayer, new BoardPosition(0, 5));
 		board4.movePlayer(firstPlayer, new BoardPosition(0, 4));
 		if (board4.checkWinner() != firstPlayer) {
-			fail("Last player to move was first Player, therefore they should have won" + "should return Player1"
+			fail("Last player to move was first Player, therefore they should have won, should return Player1"
 					+ " got " + board4.checkWinner());
 
 		}

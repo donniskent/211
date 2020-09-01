@@ -10,7 +10,7 @@ public class ReplayController {
 	}
 
 	public void go() {
-
+		TwoPlayerController control = new TwoPlayerController(); 
 		
 		IsolaBoard replayBoard = new IsolaBoard();
 		IsolaTextView replayView = new IsolaTextView(replayBoard);
@@ -18,8 +18,8 @@ public class ReplayController {
 		
 		int counter = 0;
 		ArrayList<String> moves = readMovesIn();
-		System.out.println(" Game Start ");
-		BoardSpace currentPlayer = BoardSpace.Player1;
+		System.out.println(" Isola Game Replay ");
+		BoardSpace currentPlayer = BoardSpace.Player1; 
 		BoardPosition currentPosition;
 		replayView.display();
 		System.out.println(" Board Start ");
@@ -32,11 +32,11 @@ public class ReplayController {
 			if (counter % 2 == 0) {
 				currentPosition = player1;
 				currentPlayer = BoardSpace.Player1;
-
+				
 			} else {
 				currentPosition = player2;
 				currentPlayer = BoardSpace.Player2;
-
+				
 			}
 			
 
@@ -58,39 +58,39 @@ public class ReplayController {
 
 			if (input.equals("N")) {
 
-				row = moveNorth(row);
+				row = control.moveNorth(row);
 
 			} else if (input.equals("S")) {
 
-				row = moveSouth(row);
+				row = control.moveSouth(row);
 
 			} else if (input.equals("E")) {
 
-				col = moveEast(col);
+				col = control.moveEast(col);
 
 			} else if (input.equals("W")) {
 
-				col = moveWest(col);
+				col = control.moveWest(col);
 
 			} else if (input.equals("NE")) {
 
-				row = moveNorth(row);
-				col = moveEast(col);
+				row = control.moveNorth(row);
+				col = control.moveEast(col);
 
 			} else if (input.equals("NW")) {
 
-				row = moveNorth(row);
-				col = moveWest(col);
+				row = control.moveNorth(row);
+				col = control.moveWest(col);
 
 			} else if (input.equals("SE")) {
 
-				row = moveSouth(row);
-				col = moveEast(col);
+				row = control.moveSouth(row);
+				col = control.moveEast(col);
 
 			} else if (input.equals("SW")) {
 
-				row = moveSouth(row);
-				col = moveWest(col);
+				row = control.moveSouth(row);
+				col = control.moveWest(col);
 
 			}
 
@@ -111,12 +111,13 @@ public class ReplayController {
 			counter++;
 			System.out.println(currentPlayer + " moved " + input);
 			
-		} // while
+		} // for
 		replayView.display();
-		if(currentPlayer == BoardSpace.Player1)
-		System.out.println("Game over. " + BoardSpace.Player2 + " wins");
-		else {
-			System.out.println("Game over. " + BoardSpace.Player1 + " wins");
+		System.out.println("End of game");
+		if(moves.size() % 2 == 0) {
+			System.out.println("Player 1 wins");
+		} else {
+			System.out.println("Player 2 wins");
 		}
 	
 	} // go
@@ -124,13 +125,13 @@ public class ReplayController {
 	
 
 	public ArrayList<String> readMovesIn() {
-		File file = new File("output.dat");
+		File file = new File("game.dat");
 		Scanner input;
 		try {
 			input = new Scanner(file);
 		} catch (FileNotFoundException e) {
 
-			System.out.println("output.dat not found");
+			System.out.println("game.dat not found");
 			return null;
 		}
 		ArrayList<String> allInputs = new ArrayList<String>();
@@ -145,52 +146,8 @@ public class ReplayController {
 
 	}
 
-	public int moveNorth(int row) {
+	
 
-		int newRow = row - 1;
-
-		return newRow;
-	}
-
-	public int moveSouth(int row) {
-
-		int newRow = row + 1;
-
-		return newRow;
-
-	}
-
-	public int moveEast(int col) {
-		int newCol = col + 1;
-
-		return newCol;
-
-	}
-
-	public int moveWest(int col) {
-		int newCol = col - 1;
-
-		return newCol;
-	}
-
-	public boolean checkGameOver(BoardSpace over, IsolaTextView view) {
-
-		if (over == BoardSpace.Player1) {
-			view.display();
-
-			System.out.println("Player1 wins!");
-
-			return false;
-		} else if (over == BoardSpace.Player2) {
-			view.display();
-
-			System.out.println("Player2 wins!");
-
-			return false;
-
-		}
-		return true;
-
-	}
+	
 
 }
