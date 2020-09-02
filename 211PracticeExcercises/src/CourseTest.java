@@ -1,7 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+// Fixed bug in setStudentAssignmentGrade
+// added a conditional statement to getNumAssignments so only positive numbers return
 class CourseTest {
 
 	@Test
