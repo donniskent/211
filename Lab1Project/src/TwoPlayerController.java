@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TwoPlayerController {
-
 	public static void main(String[] args) {
 		TwoPlayerController controller = new TwoPlayerController();
 		 controller.go();
