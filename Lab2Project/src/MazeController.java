@@ -12,11 +12,18 @@ public class MazeController {
 		}
 
 	public void go() {
-		Maze maze = readMazeFromFile();
+		readMazeFromFile();
 		
 		
 		
 		// read maze from file 
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		// for each start, end pair {
@@ -30,54 +37,51 @@ public class MazeController {
 		
 		
 		
-		JFileChooser chooser = new JFileChooser();
-		  int returnVal = chooser.showOpenDialog(null); 
-		    
-		    
-		    if(returnVal == JFileChooser.APPROVE_OPTION) {
-		       
-		        File file =  chooser.getSelectedFile();
-		    Scanner input = null; 
-		        
-		        
-		    try {
-				input = new Scanner(file);
-			} catch (FileNotFoundException e) {
-				System.out.println("Could not find the file " + file.getName()); 
-				
-			}
+		
 		    
 		    
 		    
-		    }
 		
 	}
 	
 	public Maze readMazeFromFile() {
 		// get file from user 
 		File file = getFile(); 
-		Scanner fileScan = new Scanner(file);
-		int widthFile = fileScan.nextInt();
-		int heightFile = fileScan.nextInt(); 
-		
-		
-		// read width
-		// read height
-		
-		
-		Maze maze = new Maze(widthFile, heightFile); 
-		
-		for(int row = 0; row < height.; row++) {
-			for(int col = 0; col < width; col++) {
-				maze.set(character, row, col);
+		Scanner fileScan = null;
+		try {
+			fileScan = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int width = fileScan.nextInt();
+		int height = fileScan.nextInt();
+		System.out.println(width + " width");
+		System.out.println(height + " height");
+		Maze maze = new Maze(height, width); 
+		//int counter = 0; 
+		for(int row = 0; row < height; row++) {
+			for(int column = 0; column < width; column++) {
+				char character = '#';
+				maze.set(character, row, column);
+			//	counter++; 	
+				}
 				
-			}
-		} 
+				
+				
+			} 
+		
+		return maze;
+		}
+		//while has next
+		// read start coordinate, add to list
+		// read end coordinate, add to list
 		
 		
-		return maze; 
+		
+		
 	
-	}
+	
 	public File getFile() {
 	
 		
