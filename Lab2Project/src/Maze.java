@@ -6,7 +6,7 @@ public class Maze {
 	public Maze (int height, int width) {
 		this.width = width; 
 		this.height = height;
-		maze = createArray(height,width); 
+		maze = new char[height][width]; 
 		
 		
 		
@@ -31,6 +31,12 @@ public class Maze {
 		maze[row][col] = character; 
 		
 	}
+	
+	public char get(int row, int column) {
+		return maze[row][column]; 
+		
+	}
+	
 	
 	
 	public String solve(int currentRow, int currentCol, int endRow, int endCol) {
