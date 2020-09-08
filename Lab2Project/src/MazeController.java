@@ -12,13 +12,22 @@ public class MazeController {
 	}
 
 	public void go() {
-		Maze maze = readMazeFromFile();
+		
+	
+		
+		Coordinates coordinate = new Coordinates();
+		Maze maze = readMazeFromFile(coordinate);
 		MazeTextView view = new MazeTextView(maze);
 		view.display();
-
+		
+		
+		
 		// read maze from file
 
 		// for each start, end pair {
+		String answer = maze.solve(coordinate.get(0), coordinate.get(1), coordinate.get(2), coordinate.get(3));
+		System.out.println(answer);
+		view.display();		
 		// solve maze
 		// output the answer }
 		//
@@ -26,7 +35,7 @@ public class MazeController {
 
 	}
 
-	public Maze readMazeFromFile() {
+	public Maze readMazeFromFile(Coordinates coordinate) {
 		// get file from user
 		File file = getFile();
 		Scanner fileScan = null;
@@ -53,12 +62,20 @@ public class MazeController {
 			// char character;
 			// maze.set(character, row, column);
 		}
-		return maze;
-	}
+		
+	
 	// while has next
 	// read start coordinate, add to list
 	// read end coordinate, add to list
-
+	
+	while(fileScan.hasNext()) {
+		coordinate.add(fileScan.nextInt()); 
+	}
+	
+		return maze; 
+	}
+	
+	
 	public File getFile() {
 
 		JFileChooser chooser = new JFileChooser();

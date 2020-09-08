@@ -41,7 +41,10 @@ public class Maze {
 	
 	public String solve(int currentRow, int currentCol, int endRow, int endCol) {
 		String result = "";
-	// drop breadcrumb
+	
+		
+	maze[currentRow][currentCol] = '.';
+	
 	// must use recursion 
 	// must return a string r,c,-r1,c1,-r2,c2,
 		// base case 1: at the end 
@@ -55,14 +58,15 @@ public class Maze {
 		
 		// base case 2: at a dead end 
 		// return null 
-		
+			
+		// count num of clear spots
 		
 		// recursive case 
 		// if only one way to go 
 		// calc next spot coordinate
 		// return solve(nextRow, nextCol, endRow,endCol)
 		
-		// count num of clear spots
+		
 		
 		// multiple ways to go 
 		
@@ -72,6 +76,20 @@ public class Maze {
 		// result = solve(eastRow,eastCol, endRow, endCol) 
 		// if result != null 
 		//  return eastRow + "," + eastCol + "," + result
+		if(maze[currentRow][currentCol + 1] == ' ') {
+		int	eastCol = moveEast(currentCol); 
+			result = solve(currentRow, eastCol, endRow, endCol); 
+			if (result != null) {
+				return currentRow + "," + eastCol + "," + result; 
+			}
+		
+		
+		
+		
+		}
+		
+		
+		
 		
 		//
 		//
@@ -83,52 +101,111 @@ public class Maze {
 				// result = solve(southRow,southCol, endRow, endCol) 
 				// if result != null 
 				//  return southRow + "," + southCol + "," + result
+		if(maze[currentRow + 1][currentCol] == ' ') {
+			int	southRow = moveSouth(currentRow); 
+				result = solve(southRow, currentCol, endRow, endCol); 
+				if (result != null) {
+					return southRow + "," + currentCol + "," + result; 
+				}
+				else {
+					
+				}
+			
+			
+			
+			
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// if we can move West
 				// calculate spot to west
 				// result = solve(westRow,westCol, endRow, endCol) 
 				// if result != null 
 		//  return westRow + "," + westCol + "," + result
+		if(maze[currentRow][currentCol - 1] == ' ') {
+			int	westCol = moveWest(currentCol); 
+				result = solve(currentRow, westCol, endRow, endCol); 
+				if (result != null) {
+					return currentRow + "," + westCol + "," + result; 
+				}
+			
+			
+			
+			
+			}
+		
+		
+		
+		
+		
 		// if we can move north
 				// calculate spot to north
 				// result = solve(northRow,northCol, endRow, endCol) 
 				// if result != null 
 				//  return nortRow + "," + northCol + "," + result
-		
-		
-		
-		
-	
-		return null; 
-	
-	
-	}
-	
-private void moveNorth(int col) {}
-
-
-private void moveSouth(int col) {}
-
-
-private void moveEast(int row) {}
-
-
-
-
-private void moveWest(int row) {}
-
-
-
-private char[][] createArray(int height, int width) {
-	 char[][]array= null;
-	for(int i = 0; i < height; i++) {
-		for(int j = 0; j< width; j++) {
-			array = new char[i][j];
+		if(maze[currentRow - 1][currentCol] == ' ') {
+			int	northRow = moveNorth(currentRow); 
+				result = solve(northRow, currentCol, endRow, endCol); 
+				if (result != null) {
+					return northRow + "," + currentCol + "," + result; 
+				}
 			
-		}
+			
+			
+			
+			}
+		
+		
+		
+		
+		
+		
+		
+	
+		return result; 
+	
+	
 	}
-		return array; 
+	
+private int moveNorth(int col) {
+	col-=1; 
+	return col;
 }
+
+
+private int moveSouth(int col) {
+	col+=1; 
+	return col; 
+}
+
+
+private int moveEast(int row) {
+	row+=1; 
+	return row; 
+}
+
+
+
+
+private int moveWest(int row) {
+	row-=1; 
+	return row; 
+}
+
+
+
+
 
 
 
