@@ -24,6 +24,13 @@ public class Coordinates {
 		}
 		
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Coordinates [list=" + list + "]";
+	}
+	public int length() {
+		return list.size(); 
+	}
 	
 }

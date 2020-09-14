@@ -12,22 +12,31 @@ public class MazeController {
 	}
 
 	public void go() {
-		
-	
-		
+
 		Coordinates coordinate = new Coordinates();
 		Maze maze = readMazeFromFile(coordinate);
 		MazeTextView view = new MazeTextView(maze);
-		view.display();
-		
-		
-		
+		// view.display();
+
 		// read maze from file
 
 		// for each start, end pair {
-		String answer = maze.solve(coordinate.get(0), coordinate.get(1), coordinate.get(2), coordinate.get(3));
-		System.out.println(answer);
-		view.display();		
+		System.out.println(coordinate.toString());
+		// view.display();
+		for (int i = 0; i < coordinate.length(); i += 4) {
+			view.display();
+			String answer = maze.solve(coordinate.get(i), coordinate.get(i + 1), coordinate.get(i + 2),
+					coordinate.get(i + 3));
+			if (answer != null) {
+				answer = coordinate.get(i) + "," + coordinate.get(i + 1) + "," + answer;
+			}
+			System.out.println(answer);
+
+			view.display();
+			System.out.println("-----------------------");
+
+			maze.resetMaze();
+		}
 		// solve maze
 		// output the answer }
 		//
@@ -62,20 +71,18 @@ public class MazeController {
 			// char character;
 			// maze.set(character, row, column);
 		}
-		
-	
-	// while has next
-	// read start coordinate, add to list
-	// read end coordinate, add to list
-	
-	while(fileScan.hasNext()) {
-		coordinate.add(fileScan.nextInt()); 
+
+		// while has next
+		// read start coordinate, add to list
+		// read end coordinate, add to list
+
+		while (fileScan.hasNext()) {
+			coordinate.add(fileScan.nextInt());
+		}
+
+		return maze;
 	}
-	
-		return maze; 
-	}
-	
-	
+
 	public File getFile() {
 
 		JFileChooser chooser = new JFileChooser();
