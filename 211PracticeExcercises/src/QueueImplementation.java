@@ -1,24 +1,21 @@
 import java.util.ArrayList;
 
-public class StackImplementation<T> implements Stack<T> {
-
+public class QueueImplementation<T> implements Queue<T> {
 	private ArrayList<T> items = new ArrayList<T>();
 
-	public void push(T item) {
-
+	public void add(T item) {
 		items.add(item);
 
 	}
 
-	public T pop() {
+	public T remove() {
 		if (!items.isEmpty()) {
-			T data = items.get(items.size() - 1);
-			items.remove(items.size() - 1);
+			T data = items.get(0);
+			items.remove(0);
 			return data;
 		}
 
 		return null;
-
 	}
 
 	public boolean isEmpty() {

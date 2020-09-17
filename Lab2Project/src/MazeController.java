@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -34,7 +35,7 @@ public class MazeController {
 
 			view.display();
 			System.out.println("-----------------------");
-
+			writeFile(answer, "fileName"); 
 			maze.resetMaze();
 		}
 		// solve maze
@@ -91,7 +92,7 @@ public class MazeController {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			File file = chooser.getSelectedFile();
-
+			
 			return file;
 
 		}
@@ -100,4 +101,19 @@ public class MazeController {
 
 	}
 
+	
+	public void writeFile(String answer, String fileName) {
+		
+		File newFile = new File(fileName + ".out");
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(newFile);
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not open " + fileName);
+			return;
+		}
+		writer.println(answer); 
+		writer.close();
+	}
+	
 }

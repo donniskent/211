@@ -31,7 +31,7 @@ public class Maze {
 
 	}
 
-	public String solve(int currentRow, int currentCol, int endRow, int endCol) {
+	public String solve(Integer currentRow, Integer currentCol, Integer endRow, Integer endCol) {
 		if ((endRow >= 0 && endRow < height) && (endCol >= 0 && endCol < width)) {
 
 			// while (currentCol <= width ) {
@@ -78,8 +78,15 @@ public class Maze {
 					result = solve(currentRow, eastCol, endRow, endCol);
 
 					if (result != null) {
-
+					 String[] nums = result.split(","); 
+						if(nums[0].equals(currentRow.toString())) {
+							return result;
+						}
+						
+						
 						return currentRow + "," + eastCol + "," + result;
+						
+					
 					}
 
 				}
@@ -89,7 +96,10 @@ public class Maze {
 
 					result = solve(southRow, currentCol, endRow, endCol);
 					if (result != null) {
-
+						 String[] nums = result.split(","); 
+							if(nums[1].equals(currentCol.toString())) {
+								return result;
+							}
 						return southRow + "," + currentCol + "," + result;
 					}
 
@@ -100,7 +110,10 @@ public class Maze {
 
 					result = solve(currentRow, westCol, endRow, endCol);
 					if (result != null) {
-
+						 String[] nums = result.split(","); 
+							if(nums[0].equals(currentRow.toString())) {
+								return result;
+							}
 						return currentRow + "," + westCol + "," + result;
 					}
 
@@ -110,7 +123,10 @@ public class Maze {
 					int northRow = moveNorth(currentRow);
 					result = solve(northRow, currentCol, endRow, endCol);
 					if (result != null) {
-
+						String[] nums = result.split(","); 
+						if(nums[1].equals(currentCol.toString())) {
+							return result;
+						}
 						return northRow + "," + currentCol + "," + result;
 					}
 
@@ -125,6 +141,11 @@ public class Maze {
 				result = solve(currentRow, eastCol, endRow, endCol);
 
 				if (result != null) {
+					 String[] nums = result.split(","); 
+						if(nums[0].equals(currentRow.toString())) {
+							return result;
+						}
+					
 					return currentRow + "," + eastCol + "," + result;
 				}
 
@@ -134,6 +155,10 @@ public class Maze {
 				int southRow = moveSouth(currentRow);
 				result = solve(southRow, currentCol, endRow, endCol);
 				if (result != null) {
+					String[] nums = result.split(","); 
+					if(nums[1].equals(currentCol.toString())) {
+						return result;
+					}
 					return southRow + "," + currentCol + "," + result;
 				}
 			}
@@ -142,6 +167,11 @@ public class Maze {
 				int westCol = moveWest(currentCol);
 				result = solve(currentRow, westCol, endRow, endCol);
 				if (result != null) {
+					 String[] nums = result.split(","); 
+						if(nums[0].equals(currentRow.toString())) {
+							return result;
+						}
+					
 					return currentRow + "," + westCol + "," + result;
 				}
 
@@ -151,6 +181,10 @@ public class Maze {
 				int northRow = moveNorth(currentRow);
 				result = solve(northRow, currentCol, endRow, endCol);
 				if (result != null) {
+					String[] nums = result.split(","); 
+					if(nums[1].equals(currentCol.toString())) {
+						return result;
+					}
 					return northRow + "," + currentCol + "," + result;
 				}
 
