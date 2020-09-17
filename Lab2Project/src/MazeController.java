@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -15,12 +16,13 @@ public class MazeController {
 	public void go() {
 
 		Coordinates coordinate = new Coordinates();
-		Maze maze = readMazeFromFile(coordinate);
+		File inFile = getFile();
+		Maze maze = readMazeFromFile(coordinate, inFile);
 		MazeTextView view = new MazeTextView(maze);
 		// view.display();
-
+		File outFile = new File(inFile + ".out");
 		// read maze from file
-
+		ArrayList<String> answerArr = new ArrayList<String>();
 		// for each start, end pair {
 		System.out.println(coordinate.toString());
 		// view.display();
@@ -35,9 +37,11 @@ public class MazeController {
 
 			view.display();
 			System.out.println("-----------------------");
-			writeFile(answer, "fileName"); 
+			answerArr.add(answer);
 			maze.resetMaze();
 		}
+		writeFile(answerArr, outFile);
+		
 		// solve maze
 		// output the answer }
 		//
@@ -45,9 +49,9 @@ public class MazeController {
 
 	}
 
-	public Maze readMazeFromFile(Coordinates coordinate) {
+	public Maze readMazeFromFile(Coordinates coordinate, File file) {
 		// get file from user
-		File file = getFile();
+		
 		Scanner fileScan = null;
 		try {
 			fileScan = new Scanner(file);
@@ -102,17 +106,18 @@ public class MazeController {
 	}
 
 	
-	public void writeFile(String answer, String fileName) {
+	public void writeFile(ArrayList<String> answer, File file) {
 		
-		File newFile = new File(fileName + ".out");
+	
 		PrintWriter writer;
 		try {
-			writer = new PrintWriter(newFile);
+			writer = new PrintWriter(file);
 		} catch (FileNotFoundException e) {
-			System.out.println("Could not open " + fileName);
+			System.out.println("Could not open " + file);
 			return;
 		}
-		writer.println(answer); 
+	for (int i = 0; i < answer.size(); i++) {
+		writer.println(answer.get(i)); }
 		writer.close();
 	}
 	
