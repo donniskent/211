@@ -28,10 +28,17 @@ public class MazeTest {
 		}
 		
 	}
-	@Test 
-	public void moveNorthTest() {
+	@Test
+	public void resetMazeTest() {
+		Maze maze = new Maze(6,5); 
+		maze.set('.', 3, 4);
+		maze.resetMaze();
+		if(maze.get(3, 4) != ' ') {
+			fail("Expected spot to be clear, got " + maze.get(3, 4));
+		}
 		
 	}
+	
 
 
 

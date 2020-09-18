@@ -24,7 +24,6 @@ public class MazeController {
 		// read maze from file
 		ArrayList<String> answerArr = new ArrayList<String>();
 		// for each start, end pair {
-		System.out.println(coordinate.toString());
 		// view.display();
 		for (int i = 0; i < coordinate.length(); i += 4) {
 			view.display();
@@ -41,7 +40,7 @@ public class MazeController {
 			maze.resetMaze();
 		}
 		writeFile(answerArr, outFile);
-		
+
 		// solve maze
 		// output the answer }
 		//
@@ -51,7 +50,7 @@ public class MazeController {
 
 	public Maze readMazeFromFile(Coordinates coordinate, File file) {
 		// get file from user
-		
+
 		Scanner fileScan = null;
 		try {
 			fileScan = new Scanner(file);
@@ -96,7 +95,7 @@ public class MazeController {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 
 			File file = chooser.getSelectedFile();
-			
+
 			return file;
 
 		}
@@ -105,10 +104,8 @@ public class MazeController {
 
 	}
 
-	
 	public void writeFile(ArrayList<String> answer, File file) {
-		
-	
+
 		PrintWriter writer;
 		try {
 			writer = new PrintWriter(file);
@@ -116,9 +113,14 @@ public class MazeController {
 			System.out.println("Could not open " + file);
 			return;
 		}
-	for (int i = 0; i < answer.size(); i++) {
-		writer.println(answer.get(i)); }
+		for (int i = 0; i < answer.size(); i++) {
+			if(answer.get(i) == null) {
+				writer.println("Impossible");
+			}
+			else {
+			writer.println(answer.get(i));}
+		}
 		writer.close();
 	}
-	
+
 }
