@@ -56,7 +56,7 @@ public class MazeController {
 			fileScan = new Scanner(file);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Unable to open file.");
 		}
 		int width = fileScan.nextInt();
 		int height = fileScan.nextInt();

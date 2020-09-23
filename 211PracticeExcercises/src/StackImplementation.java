@@ -28,4 +28,17 @@ public class StackImplementation<T> implements Stack<T> {
 		return false;
 	}
 
+	public T getData(int index) {
+		return items.get(index); 
+	}
+
+	public int length() {
+		return items.size();
+	}
+	public void print() {
+		for(int i = 0; i < items.size(); i ++) {
+			System.out.println(items.get(i));
+		}
+	} 
+
 }
