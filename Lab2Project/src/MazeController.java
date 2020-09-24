@@ -18,24 +18,23 @@ public class MazeController {
 		Coordinates coordinate = new Coordinates();
 		File inFile = getFile();
 		Maze maze = readMazeFromFile(coordinate, inFile);
-		MazeTextView view = new MazeTextView(maze);
+	//	MazeTextView view = new MazeTextView(maze);
 		// view.display();
 		File outFile = new File(inFile + ".out");
-		// read maze from file
 		ArrayList<String> answerArr = new ArrayList<String>();
 		// for each start, end pair {
 		// view.display();
 		for (int i = 0; i < coordinate.length(); i += 4) {
-			view.display();
+		//	view.display();
 			String answer = maze.solve(coordinate.get(i), coordinate.get(i + 1), coordinate.get(i + 2),
 					coordinate.get(i + 3));
 			if (answer != null) {
 				answer = coordinate.get(i) + "," + coordinate.get(i + 1) + "," + answer;
 			}
-			System.out.println(answer);
+		//	System.out.println(answer);
 
-			view.display();
-			System.out.println("-----------------------");
+		//	view.display();
+		//	System.out.println("-----------------------");
 			answerArr.add(answer);
 			maze.resetMaze();
 		}
@@ -61,8 +60,8 @@ public class MazeController {
 		int width = fileScan.nextInt();
 		int height = fileScan.nextInt();
 		fileScan.nextLine();
-		System.out.println(width + " width");
-		System.out.println(height + " height");
+	//	System.out.println(width + " width");
+	//	System.out.println(height + " height");
 		Maze maze = new Maze(height, width);
 
 		for (int row = 0; row < height; row++) {
