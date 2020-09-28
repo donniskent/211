@@ -25,29 +25,38 @@ public void go() {
 	
 	
 	
-	System.out.println("Red, enter coordinate of piece you want to move and coordinate of new position.");
 	
 	Scanner scan = new Scanner(System.in); 
+	int counter = 0; 
+	BoardSpace currentPlayer = BoardSpace.Red;
 	while(true) {
-	System.out.println("Red, enter coordinate of piece you want to move and coordinate of new position.");
-
+		if(counter % 2 == 0) {
+			currentPlayer = BoardSpace.Red;
+				
+			} 
+			if(counter % 2 > 0) {
+				currentPlayer = BoardSpace.Black;
+			}
+			System.out.println(currentPlayer + " move: ");
 	int currentRow = scan.nextInt();
 	int currentCol = scan.nextInt();
 	int endRow = scan.nextInt();
 	int endCol = scan.nextInt();
 	boolean moved; 
 	
-
-		 moved = board.movePlayer(currentRow, currentCol, endRow, endCol, BoardSpace.Red);
+	
+	
+	moved = board.movePlayer(currentRow, currentCol, endRow, endCol, currentPlayer);
 	
 	
 	
 	
 	if(moved == false) {
 		System.out.println("Invalid move. Please enter a valid move.");
-		
+		counter-=1; 
 	}
 	view.display();
+	counter+=1; 
 	// ask player for move as coordinates 
 	
 	
