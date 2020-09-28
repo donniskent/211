@@ -78,7 +78,7 @@ public class StackApplication {
 				
 			}
 		
-			System.out.println("line " + counter + " " + stack.length());
+			
 			if(stop == true) {
 				break;
 			}
