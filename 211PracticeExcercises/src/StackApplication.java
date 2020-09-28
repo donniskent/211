@@ -91,6 +91,7 @@ public class StackApplication {
 		else if (answer.equals("") && !stack.isEmpty()) {
 			System.out.println("Missing a closing for ");
 			stack.print();
+			System.out.println("Reconized at line " + counter);
 		}
 		
 		else {
