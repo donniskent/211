@@ -7,7 +7,7 @@ public class PartTimeEmployee extends HourlyEmployee {
 	}
 	public void addHours(int hours) {
 		
-		if (super.getHours() + hours < hourLimit) {
+		if (super.getHours() + hours <= hourLimit) {
 		 super.addHours(hours);
 			
 		
