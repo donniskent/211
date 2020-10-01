@@ -14,7 +14,8 @@ public class PartTimeEmployee extends HourlyEmployee {
 		
 		}
 		else {
-			System.out.println("Too many hours worked");
+			System.out.println("Too many hours worked, can't add anymore.");
+	
 		}
 	
 	
