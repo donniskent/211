@@ -5,7 +5,7 @@ public class Board {
 // each piece on board needs an arraylist to accompany it 
 	
 	private List<BoardSpace>[][] board = new List[7][7];
-	private BoardSpace lastPlayer = BoardSpace.Red;
+	
 	
 	
 	public Board() {
@@ -129,7 +129,7 @@ public class Board {
 								board[currentRow + 1][currentCol + 1].add(BoardSpace.Available);
 							}
 							else {
-							board[currentRow + 1][currentCol + 1].remove(board[currentRow + 1][currentCol + 1].get(board[currentRow + 1][currentCol + 1].size()-1));
+							board[currentRow + 1][currentCol + 1].remove(0);
 							}
 							board[currentRow][currentCol] = placeHolder;
 							return true;
@@ -150,7 +150,7 @@ public class Board {
 								board[currentRow + 1][currentCol - 1].add(BoardSpace.Available);
 							}
 							else {
-							board[currentRow + 1][currentCol - 1].remove(board[currentRow + 1][currentCol - 1].get(board[currentRow + 1][currentCol - 1].size()-1));
+							board[currentRow + 1][currentCol - 1].remove(0);
 							}
 							board[currentRow][currentCol] = placeHolder;
 							return true;
@@ -186,7 +186,7 @@ public class Board {
 								board[currentRow - 1][currentCol + 1].add(BoardSpace.Available);
 							}
 							else {
-							board[currentRow - 1][currentCol + 1].remove(board[currentRow - 1][currentCol + 1].get(board[currentRow - 1][currentCol + 1].size()-1));
+							board[currentRow - 1][currentCol + 1].remove(0);
 							}
 							board[currentRow][currentCol] = placeHolder;
 							return true;
@@ -205,7 +205,7 @@ public class Board {
 								board[currentRow - 1][currentCol - 1].add(BoardSpace.Available);
 							}
 							else {
-							board[currentRow - 1][currentCol - 1].remove(board[currentRow - 1][currentCol - 1].get(board[currentRow - 1][currentCol - 1].size()-1));
+							board[currentRow - 1][currentCol - 1].remove(0);
 							}
 							board[currentRow][currentCol] = placeHolder;
 							return true;
@@ -254,4 +254,10 @@ public class Board {
 	}
 	
 	
+
+
+
+
+
+
 }
