@@ -1,4 +1,4 @@
-import java.util.InputMismatchException;
+
 import java.util.Scanner;
 
 public class TwoPlayerController {
@@ -9,18 +9,19 @@ public class TwoPlayerController {
 
 	public void go() {
 		// make a board
+		System.out.println("Welcome to Lasca");
+		System.out.println("Player 1 will be Red (R). Player 2 will be Black (B)");
+		System.out.println("To enter a move, first input the row (space) column of the piece you "
+				+ "want to move, ");
+		System.out.println("then the row (space) column of where you want to move to. ");
+		
 		Board board = new Board();
-		// use strings to store whats on top and
 		BoardTextView view = new BoardTextView(board);
-		System.out.println(board.getHeight());
-		System.out.println(board.getWidth());
+		
 
 		view.display();
 
-		// make a view
-
-		// while (game on) {
-		// ask player to pick a piece to move (r,c)
+		
 
 		Scanner scan = new Scanner(System.in);
 		int counter = 0;
@@ -71,7 +72,7 @@ public class TwoPlayerController {
 				moved = board.movePlayer(currentRow, currentCol, endRow, endCol, currentPlayer);
 			}
 
-			catch (InputMismatchException e) {
+			catch (Exception e) {
 				moved = false;
 				scan.next(); // jumps scanner out of infinite loop
 			}
@@ -104,10 +105,10 @@ public class TwoPlayerController {
 				try {
 					int row = scan1.nextInt();
 					int col = scan1.nextInt();
-					board.peek(row, col);
+					peek(row, col, board);
 				} catch (Exception e) {
 					System.out.println("Error. Enter valid coordinates");
-					scan1.next();
+					scan1.nextLine();
 					continue;
 
 				}
@@ -169,5 +170,18 @@ public class TwoPlayerController {
 		return true;
 
 	}
+
+	public void peek(int row, int col, Board board) {
+		System.out.println(board.getList(row, col));
+
+	}
+
+
+
+
+
+
+
+
 
 }

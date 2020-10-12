@@ -10,7 +10,7 @@ public class Course {
 	 * Returns the number of assignments in the course. Number of assignments should
 	 * be at least 1.
 	 */
-	public Course(int numAssignments) {
+	public Course (int numAssignments) {
 		this.numAssignments = numAssignments;
 	}
 
