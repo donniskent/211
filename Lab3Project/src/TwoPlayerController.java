@@ -11,9 +11,11 @@ public class TwoPlayerController {
 		// make a board
 		System.out.println("Welcome to Lasca");
 		System.out.println("Player 1 will be Red (R). Player 2 will be Black (B)");
-		System.out.println("To enter a move, first input the row (space) column of the piece you "
+		System.out.println("To enter a move, first input the row, a space, then the column of the piece you "
 				+ "want to move, ");
-		System.out.println("then the row (space) column of where you want to move to. ");
+		System.out.println("then the row, followed by a space, and column of where you want to move to. ");
+		System.out.println("The first row is 0, the first column is 0, the last row is 6 "
+				+ "and the last column is 6");
 		
 		Board board = new Board();
 		BoardTextView view = new BoardTextView(board);
