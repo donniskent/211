@@ -42,7 +42,7 @@ public class Cockpit extends State{
 		}
 		if(choice == 4) {
 			getModel().setHasGun(true);
-			return TheState.MiddlePlane;
+			return TheState.CockPit;
 		}
 		return TheState.CockPit;
 	}

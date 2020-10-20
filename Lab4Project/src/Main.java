@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Main {
@@ -14,32 +14,44 @@ public class Main {
 		State [] states = new State[9];
 		MiddlePlane middlePlane = new MiddlePlane(model);
 		Cockpit cockpit = new Cockpit(model);
+		OutsidePlane outsidePlane = new OutsidePlane(model);
+		CabinPorch cabinPorch = new CabinPorch(model);
+		Snowmobile snowmobile = new Snowmobile(model);
+		LivingRoom livingRoom = new LivingRoom(model);
+		Woodpile woodPile = new Woodpile(model);
 		states[0] = middlePlane;
 		states[1] = cockpit;
+		states[2] = outsidePlane;
+		states[3] = cabinPorch;
+		states[4] = snowmobile;
+		states[5] = livingRoom;
+		states[6] = woodPile;
 		int answer;
 		TheState currentState = model.getCurrentState();
 		while(!currentState.equals(TheState.Solved)) {
 			
 			if(currentState.equals(TheState.MiddlePlane)) {
-				states[0].setMenu(states[0].getMenu());
-				states[0].setMessage(states[0].getMessage());
-			View middlePlaneView = new View(states[0]);
-			middlePlaneView.printCurrentMessage();
-			middlePlaneView.printMenu();
-			answer = input(1,3);
-			currentState = states[0].choice(answer); } 
+				currentState = makeMove(states[0]);
+			} 
 			
 			if(currentState.equals(TheState.CockPit)) {
-				states[1].setMenu(states[1].getMenu());
-				states[1].setMessage(states[1].getMessage());
-				View cockPitView = new View(states[1]);
-				cockPitView.printCurrentMessage();
-				cockPitView.printMenu();
-				answer = input(1,4);
-				currentState = states[1].choice(answer);
+				currentState = makeMove(states[1]);
 			}
-		
-		
+			if(currentState.equals(TheState.OutsidePlane)) {
+				currentState = makeMove(states[2]);
+			}
+			if(currentState.equals(TheState.CabinPorch)) {
+				currentState = makeMove(states[3]);
+			}
+			if(currentState.equals(TheState.SnowMobile)) {
+				currentState = makeMove(states[4]);
+			}
+			if(currentState.equals(TheState.CabinLivingRoom)) {
+				currentState = makeMove(states[5]);
+			}
+			if(currentState.equals(TheState.WoodPile)) {
+				currentState = makeMove(states[6]);
+			}
 		
 		
 		
@@ -82,7 +94,21 @@ public class Main {
 	
 	
 	
-
+	public TheState makeMove(State state) {
+		
+		state.setMenu(state.getMenu());
+		state.setMessage(state.getMessage());
+		View view = new View(state);
+		view.printCurrentMessage();
+		view.printMenu();
+		int answer = input(1,state.getMenu().size());
+		TheState currentState = state.choice(answer);
+		return currentState;
+	}
+	
+	
+	
+	
 	public int input (int start, int end) {
 		Scanner scan = new Scanner(System.in);
 		int answer = -1; 

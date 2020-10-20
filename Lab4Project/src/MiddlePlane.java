@@ -30,6 +30,7 @@ public class MiddlePlane extends State{
 
 	
 	public void setMenu(ArrayList<String> menu) {
+		menu.clear();
 		menu.add(". Save game and quit");
 		menu.add(". Go outside");
 		menu.add(". Go to cockpit");
@@ -38,6 +39,7 @@ public class MiddlePlane extends State{
 
 	
 	public void setMessage(ArrayList<String> message) {
+		message.clear();
 		message.add("Test");
 		message.add("Test 2"); 
 		message.add("Test 3"); 

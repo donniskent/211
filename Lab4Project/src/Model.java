@@ -4,6 +4,10 @@ public class Model {
 	private boolean hasDoorKeys = false;
 	private boolean hasHatchet = false;
 	private boolean hasGun = false; 
+	private boolean hasSnowmobileKey = false;
+	private boolean lockedCabin = true;
+	private boolean hasMap = false;
+	private boolean hasGas = false;
 	public boolean getHasHatchet() {
 		return hasHatchet;
 	}
@@ -29,6 +33,38 @@ public class Model {
 	}
 	public void setHasDoorKeys(boolean hasDoorKeys) {
 		this.hasDoorKeys = hasDoorKeys; 
+	}
+
+	public boolean getHasSnowmobileKey() {
+		return hasSnowmobileKey;
+	}
+
+	public void setHasSnowmobileKey(boolean hasSnowmobileKey) {
+		this.hasSnowmobileKey = hasSnowmobileKey;
+	}
+
+	public boolean getLockedCabin() {
+		return lockedCabin;
+	}
+
+	public void setLockedCabin(boolean lockedCabin) {
+		this.lockedCabin = lockedCabin;
+	}
+
+	public boolean getHasMap() {
+		return hasMap;
+	}
+
+	public void setHasMap(boolean hasMap) {
+		this.hasMap = hasMap;
+	}
+
+	public boolean getHasGas() {
+		return hasGas;
+	}
+
+	public void setHasGas(boolean hasGas) {
+		this.hasGas = hasGas;
 	}
 
 }

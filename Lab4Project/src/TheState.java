@@ -6,10 +6,12 @@ public enum TheState {
 	CabinPorch,
 	CabinLivingRoom,
 	Kitchen,
+	Bedroom,
 	SnowMobile,
 	MainRoad,
 	OffRoad,
 	Solved,
+	WoodPile,
 	Save
 	
 }

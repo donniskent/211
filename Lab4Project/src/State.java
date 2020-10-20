@@ -19,8 +19,6 @@ private int choice;
 private Model model; 
 	public State(Model model) {
 		this.model = model;
-		setMenu(menu);
-		setMessage(message);
 	}
 abstract TheState choice(int choice);
 
