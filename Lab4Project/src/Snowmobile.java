@@ -24,7 +24,7 @@ public class Snowmobile extends State{
 		if(choice == 5 && getModel().getHasSnowmobileKey() == true) {
 			return TheState.MainRoad;
 		}
-		if(choice == 6 && getModel().getHasSnowmobileKey() == true) {
+		if(choice == 6 && getModel().getHasSnowmobileKey() == true && getModel().getHasMap() == true) {
 			return TheState.OffRoad;
 		}
 		return TheState.SnowMobile;
@@ -39,7 +39,9 @@ public class Snowmobile extends State{
 		menu.add(". Approach plane");
 		if(getModel().getHasSnowmobileKey() == true) {
 			menu.add(". Drive down the road");
-			menu.add(". Drive down the wooded path.");
+		}
+		if(getModel().getHasMap() == true) {
+		menu.add(". Drive down the wooded path.");
 		}
 	}
 
@@ -52,10 +54,26 @@ public class Snowmobile extends State{
 		message.add("You decide the key is probably somewhere in the house");
 		
 		}
-		else {
-		message.add("You turn the key and the snowmobile cranks over. The gas gauge is low, ");
-		message.add("you hope that you have enough to find someone to help you");
+		if(getModel().getHasSnowmobileKey() == true) {
+		message.add("You turn the key and the snowmobile cranks over. The gas gauge is low. ");
+		message.add("The main road is on your mind. You believe it can lead you to civilization.");
 		}
+		if(getModel().getHasGas() == false && getModel().getHasSnowmobileKey() == true) {
+		message.add("you hope that you have enough gas to find someone to help you");}
+		
+		if(getModel().getHasGas() == true && getModel().getHasSnowmobileKey() == true) {
+			message.add("Luckily, you brought that gas can with you. You top the tank off.");
+			}
+		
+		
+		
+		
+		if(getModel().getHasSnowmobileKey() == true && getModel().getHasMap() == true) {
+			message.add("You take a look at the map and realize there is a second shorter path to");
+			message.add(" civilization. It cuts through the thick pine forrest behind the house.");
+			message.add("You ponder which route you should take (the short cut is 10 miles quicker)");
+		}
+		
 	}
 
 

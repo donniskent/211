@@ -7,30 +7,67 @@ public class Woodpile extends State{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	TheState choice(int choice) {
-		// TODO Auto-generated method stub
-		return null;
+		if (choice == 1) {
+			return TheState.Save;
+		}
+		if(choice == 2) {
+			return TheState.OutsidePlane;
+		}
+		if(choice == 3) {
+			return TheState.CabinPorch;
+		}
+		if(choice == 4) {
+			return TheState.SnowMobile;
+		}
+		
+		
+		if (choice == 5) {
+			if(getModel().getHasHatchet() == false) {
+				getModel().setHasHatchet(true);
+				return TheState.WoodPile;
+			}
+			if(getModel().getHasHatchet() == true) {
+				getModel().setHasGas(true);
+				return TheState.WoodPile;
+			}
+			
+		}
+		
+		
+		if (choice == 6 && getModel().getHasHatchet() == false) {
+			getModel().setHasGas(true);
+			return TheState.WoodPile;
+		}
+	
+		return TheState.WoodPile;
 	}
 
-	@Override
+	
 	void setMenu(ArrayList<String> menu) {
+		menu.clear();
 		menu.add(". Save and quit");
-		menu.add(". Pick up the hatchet");
-		menu.add(". Pick up the gas can");
+		menu.add(". Approach plane");
+		menu.add(". Go to porch");
+		menu.add(". Go to the snowmobile");
+		if(getModel().getHasHatchet() == false) {
+		menu.add(". Pick up the hatchet"); }
+		if(getModel().getHasGas() == false) {
+		menu.add(". Pick up the gas can"); }
 		
 	}
 
-	@Override
+	
 	void setMessage(ArrayList<String> message) {
 		message.clear();
 		if(getModel().getHasGas() == false) {
-		message.add("Coming up to the woodpile, you notice a can of gas sitting in the corner.");
+		message.add("A can of gas sits beside the woodpile.");
 		}
 		if(getModel().getHasHatchet() == false) {
-			message.add("There is also a hatchet stuck in a pile of old rotten wood.");
+			message.add("There is a hatchet stuck in a rotten log.");
 		}
-		else {
+		if(getModel().getHasHatchet() == true && getModel().getHasGas() == true) {
 			message.add("Only the rotten wood remains in the area.");
 		}
 	}

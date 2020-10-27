@@ -8,6 +8,19 @@ public class Model {
 	private boolean lockedCabin = true;
 	private boolean hasMap = false;
 	private boolean hasGas = false;
+	private boolean seenPicture = false;
+	private boolean doorBroken = false;
+	private boolean planeOpen = false; 
+	public void save () {
+		String status = "";
+		
+		
+		
+	}
+	
+	
+	
+	
 	public boolean getHasHatchet() {
 		return hasHatchet;
 	}
@@ -65,6 +78,30 @@ public class Model {
 
 	public void setHasGas(boolean hasGas) {
 		this.hasGas = hasGas;
+	}
+
+	public boolean getSeenPicture() {
+		return seenPicture;
+	}
+
+	public void setSeenPicture(boolean seenPicture) {
+		this.seenPicture = seenPicture;
+	}
+
+	public boolean getDoorBroken() {
+		return doorBroken;
+	}
+
+	public void setDoorBroken(boolean doorBroken) {
+		this.doorBroken = doorBroken;
+	}
+
+	public boolean getPlaneOpen() {
+		return planeOpen;
+	}
+
+	public void setPlaneOpen(boolean planeOpen) {
+		this.planeOpen = planeOpen;
 	}
 
 }

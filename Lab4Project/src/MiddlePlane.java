@@ -40,9 +40,8 @@ public class MiddlePlane extends State{
 	
 	public void setMessage(ArrayList<String> message) {
 		message.clear();
-		message.add("Test");
-		message.add("Test 2"); 
-		message.add("Test 3"); 
+		message.add("Standing in the middle of the plane, you see two doors.");
+		message.add("The first door leads outside. The other to the cockpit.");  
 		
 	}
 	

@@ -11,7 +11,7 @@ public class Main {
 
 	public void go() {
 		Model model = new Model();
-		State [] states = new State[9];
+		State [] states = new State[11];
 		MiddlePlane middlePlane = new MiddlePlane(model);
 		Cockpit cockpit = new Cockpit(model);
 		OutsidePlane outsidePlane = new OutsidePlane(model);
@@ -19,6 +19,10 @@ public class Main {
 		Snowmobile snowmobile = new Snowmobile(model);
 		LivingRoom livingRoom = new LivingRoom(model);
 		Woodpile woodPile = new Woodpile(model);
+		Kitchen kitchen = new Kitchen(model);
+		Bedroom bedroom = new Bedroom(model);
+		MainRoad mainRoad = new MainRoad(model);
+		BackRoad backRoad = new BackRoad(model);
 		states[0] = middlePlane;
 		states[1] = cockpit;
 		states[2] = outsidePlane;
@@ -26,12 +30,17 @@ public class Main {
 		states[4] = snowmobile;
 		states[5] = livingRoom;
 		states[6] = woodPile;
-		int answer;
+		states[7] = kitchen;
+		states[8] = bedroom;
+		states[9] = mainRoad;
+		states[10] = backRoad;
 		TheState currentState = model.getCurrentState();
+		TheState saveState = TheState.MiddlePlane;
 		while(!currentState.equals(TheState.Solved)) {
 			
 			if(currentState.equals(TheState.MiddlePlane)) {
 				currentState = makeMove(states[0]);
+				saveState = TheState.MiddlePlane;
 			} 
 			
 			if(currentState.equals(TheState.CockPit)) {
@@ -52,18 +61,32 @@ public class Main {
 			if(currentState.equals(TheState.WoodPile)) {
 				currentState = makeMove(states[6]);
 			}
+			if(currentState.equals(TheState.Kitchen)) {
+				currentState = makeMove(states[7]);
+			}
+		
+			if(currentState.equals(TheState.Bedroom)) {
+				currentState = makeMove(states[8]);
+			}
+
+			if(currentState.equals(TheState.MainRoad)) {
+				currentState = makeMove(states[9]);
+			}
+
+			if(currentState.equals(TheState.OffRoad)) {
+				currentState = makeMove(states[10]);
+			}
+			
 		
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		
-			}}
+			}
+	
+	
+	
+	}
 		
 		
 		
@@ -102,6 +125,12 @@ public class Main {
 		view.printCurrentMessage();
 		view.printMenu();
 		int answer = input(1,state.getMenu().size());
+		if(state.choice(answer) == TheState.Save ) {
+		
+		
+		}
+		
+		
 		TheState currentState = state.choice(answer);
 		return currentState;
 	}
@@ -129,7 +158,7 @@ public class Main {
 	
 	
 	}
-
+	
 
 
 }

@@ -7,7 +7,7 @@ public class LivingRoom extends State{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	TheState choice(int choice) {
 		if(choice == 1) {
 			return TheState.Save;
@@ -24,7 +24,7 @@ public class LivingRoom extends State{
 		return TheState.CabinLivingRoom;
 	}
 
-	@Override
+	
 	void setMenu(ArrayList<String> menu) {
 		menu.clear();
 		menu.add(". Save and quit");
@@ -34,11 +34,11 @@ public class LivingRoom extends State{
 		
 	}
 
-	@Override
+	
 	void setMessage(ArrayList<String> message) {
 		message.clear();
-		message.add("Stepping into the house, it seems that nobody has been home for a while.");
-		message.add("It is freezing cold inside and the electricity had been shut off.");
+		message.add("The door is busted down. Stepping into the house, it seems that nobody has been home for a while.");
+		message.add("It is freezing cold inside and the electricity has been shut off.");
 		message.add("There are two doorways to walk through at opposite sides of the living room");
 		
 	}

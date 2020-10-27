@@ -42,11 +42,12 @@ public class OutsidePlane extends State{
 
 	@Override
 	public void setMessage(ArrayList<String> message) {
-		message.clear();
-		message.add("The brightness of the sun blinds you momentarily.");
-		message.add("As they readjust you notice 3 things. Firstly, there is a cabin no more than ");
+		
+		message.add("You step outside the plane.");
+		message.add("There is a cabin no more than ");
 		message.add("100 yards from the plane. In front of the cabin is a snow covered snowmobile, and");
-		message.add(" beside the house lays some chopped wood and a hatchet. in front of the house is an icy road.");
+		message.add(" beside the cabin lays some chopped wood and a hatchet. Behind the cabin is an icy road.");
+		
 		
 		
 		

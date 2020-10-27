@@ -7,7 +7,7 @@ public class CabinPorch extends State{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	TheState choice(int choice) {
 		if(choice == 1) {
 			return TheState.Save;
@@ -29,7 +29,7 @@ public class CabinPorch extends State{
 	return TheState.CabinPorch;
 	}
 
-	@Override
+	
 	void setMenu(ArrayList<String> menu) {
 		menu.clear();
 		menu.add(". Save and quit");
@@ -43,7 +43,7 @@ public class CabinPorch extends State{
 		
 	}
 
-	@Override
+	
 	void setMessage(ArrayList<String> message) {
 		if(getModel().getHasHatchet() == false) {
 		message.clear();
