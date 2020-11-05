@@ -12,7 +12,7 @@ public class Bedroom extends State {
 			return TheState.Bedroom;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.CabinLivingRoom);
+			
 
 			return TheState.CabinLivingRoom;
 		}

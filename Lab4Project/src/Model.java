@@ -12,7 +12,7 @@ public class Model {
 	private boolean seenPicture = false;
 	private boolean doorBroken = false;
 	private boolean doorKnock = false;
-
+	private boolean openDoor = false;
 	public String save() {
 		String status = "";
 		status += saveState();
@@ -26,6 +26,7 @@ public class Model {
 		status += " " + saveBoolean(seenPicture);
 		status += " " + saveBoolean(doorBroken);
 		status += " " + saveBoolean(doorKnock);
+		status += " " + saveBoolean(openDoor);
 		return status;
 
 	}
@@ -43,6 +44,7 @@ public class Model {
 		seenPicture = loadBoolean(input.next());
 		doorBroken = loadBoolean(input.next());
 		doorKnock = loadBoolean(input.next());
+		openDoor = loadBoolean(input.next());
 		input.close();
 	}
 
@@ -217,6 +219,14 @@ public class Model {
 
 	public boolean loadBoolean(String value) {
 		return value.equals("T");
+	}
+
+	public boolean getOpenDoor() {
+		return openDoor;
+	}
+
+	public void setOpenDoor(boolean openDoor) {
+		this.openDoor = openDoor;
 	}
 
 }

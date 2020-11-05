@@ -9,25 +9,25 @@ public class OutsidePlane extends State {
 
 	public TheState choice(int choice) {
 		if (choice == 1) {
-			return TheState.Save;
+			return TheState.OutsidePlane;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.CabinPorch);
+			
 			return TheState.CabinPorch;
 		}
 		if (choice == 3) {
-			getModel().setCurrentState(TheState.SnowMobile);
+			
 
 			return TheState.SnowMobile;
 		}
 		if (choice == 4) {
-			getModel().setCurrentState(TheState.WoodPile);
+			
 
 			return TheState.WoodPile;
 
 		}
 		if (choice == 5) {
-			getModel().setCurrentState(TheState.MiddlePlane);
+		
 
 			return TheState.MiddlePlane;
 		}

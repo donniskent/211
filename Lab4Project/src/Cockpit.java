@@ -10,25 +10,24 @@ public class Cockpit extends State {
 	public TheState choice(int choice) {
 
 		if (choice == 1) {
-			return TheState.Save;
+			return TheState.CockPit;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.MiddlePlane);
+		
 			return TheState.MiddlePlane;
 		}
 
 		if (choice == 3) {
-			if ((getModel().getDoorKeys() == false && getModel().getHasGun() == false)
-					|| (getModel().getDoorKeys() == false && getModel().getHasGun() == true)) {
+			if ((getModel().getDoorKeys() == false )) {
 				getModel().setHasDoorKeys(true);
-				getModel().setCurrentState(TheState.CockPit);
+			
 
 				return TheState.CockPit;
 			}
 
 			if (getModel().getDoorKeys() == true && getModel().getHasGun() == false) {
 				getModel().setHasGun(true);
-				getModel().setCurrentState(TheState.CockPit);
+			
 				return TheState.CockPit;
 			}
 

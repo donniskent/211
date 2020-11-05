@@ -9,19 +9,17 @@ public class LivingRoom extends State {
 
 	public TheState choice(int choice) {
 		if (choice == 1) {
-			return TheState.Save;
+			return TheState.CabinLivingRoom;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.Kitchen);
+			
 			return TheState.Kitchen;
 		}
 		if (choice == 3) {
-			getModel().setCurrentState(TheState.Bedroom);
 
 			return TheState.Bedroom;
 		}
 		if (choice == 4) {
-			getModel().setCurrentState(TheState.CabinPorch);
 
 			return TheState.CabinPorch;
 		}
@@ -39,9 +37,9 @@ public class LivingRoom extends State {
 
 	public void setMessage(ArrayList<String> message) {
 		message.clear();
-		if (getModel().getHasSnowmobileKey() == false && getModel().getHasSnowmobileKey() == false) {
+		if (getModel().getHasSnowmobileKey() == false && getModel().getHasMap() == false) {
 			message.add("The house is empty. Two doors lay at opposite ends of the living room.");
-			message.add("Pieces of the door are scattered around the room.");
+			message.add("Pieces of the busted front door are scattered around the room.");
 
 		} else {
 			message.add("You stand in the living room");

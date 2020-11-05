@@ -8,14 +8,29 @@ public class BackRoadTest {
 	public void setMessageTest() {
 		Model model = new Model();
 		BackRoad backRoad = new BackRoad(model);
-		model.setSeenPicture(true);
 		backRoad.setMessage(backRoad.getMessage());
-		if(!backRoad.getMessage().get(6).equals("You quickly realize that these are the bodies of the people from the picture in the bedroom!")) {
-			fail("Expected different print message at index 6 when the picture has been seen");
+		if(backRoad.getMessage().contains("You quickly realize that these are the bodies of the people from the picture in the bedroom!")) {
+			fail("Seeing picture should be false");
 		}
 		
+		if(backRoad.getMessage().contains("You then remember the Glock you took off the pilots hip.")) {
+			fail("Gun is false, shouldnt be in the message");
+		}
 		
-		
+		if(!backRoad.getMessage().contains("You lose")) {
+			fail("Shouldve told user they lost");
+		}		
+	model.setHasGun(true);
+	backRoad.setMessage(backRoad.getMessage());
+	if(!backRoad.getMessage().contains("You then remember the Glock you took off the pilots hip.")) {
+		fail("Shouldve had gun.");
+	}
+	
+	model.setSeenPicture(true);
+	backRoad.setMessage(backRoad.getMessage());
+	if(!backRoad.getMessage().contains("You quickly realize that these are the bodies of the people from the picture in the bedroom!")) {
+		fail("Seeing picture should be true");
+	}
 	}
 
 }

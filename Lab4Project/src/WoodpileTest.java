@@ -8,24 +8,23 @@ public class WoodpileTest {
 	public void choiceTest() {
 		Model model = new Model();
 		Woodpile woodPile = new Woodpile(model);
-		if(!woodPile.choice(1).equals(TheState.WoodPile) || (!model.getCurrentState().equals(TheState.WoodPile))) {
-			fail("Expected woodPile to return, got " + woodPile.choice(1) 
-			+ "Expected current state to be wooodpile, got " + model.getCurrentState());
+		if(!woodPile.choice(1).equals(TheState.WoodPile)) {
+			fail("Expected woodPile to return, got " + woodPile.choice(1));
 		}
-		if(!woodPile.choice(2).equals(TheState.OutsidePlane)|| (!model.getCurrentState().equals(TheState.OutsidePlane))) {
+		if(!woodPile.choice(2).equals(TheState.OutsidePlane)) {
 			fail("Expected outsidePlane to return, got " + woodPile.choice(2));
 			
 		}
-		if(!woodPile.choice(3).equals(TheState.CabinPorch)|| (!model.getCurrentState().equals(TheState.CabinPorch))) {
+		if(!woodPile.choice(3).equals(TheState.CabinPorch)) {
 			fail("Expected CabinPorch to return, got " + woodPile.choice(3));
 			
 		}
-		if(!woodPile.choice(4).equals(TheState.SnowMobile)|| (!model.getCurrentState().equals(TheState.SnowMobile))) {
+		if(!woodPile.choice(4).equals(TheState.SnowMobile)) {
 			fail("Expected SnowMobile to return, got " + woodPile.choice(4));
 			
 		}
 		// choice 5's menu relies on the boolean value of hatchet 
-		if(!woodPile.choice(5).equals(TheState.WoodPile)|| (!model.getCurrentState().equals(TheState.WoodPile))) {
+		if(!woodPile.choice(5).equals(TheState.WoodPile)) {
 			fail("Expected woodpile to return, got " + woodPile.choice(5));
 		}
 		// need to check if hatchet is setting
@@ -41,7 +40,7 @@ public class WoodpileTest {
 	
 		model.setHasGas(false);
 		model.setHasHatchet(false);
-		if(!woodPile.choice(6).equals(TheState.WoodPile)|| (!model.getCurrentState().equals(TheState.WoodPile))) {
+		if(!woodPile.choice(6).equals(TheState.WoodPile)) {
 			fail("Expected woodpile to return, got " + woodPile.choice(6));
 		}
 		if(model.getHasGas() == false) {

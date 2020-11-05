@@ -9,29 +9,26 @@ public class Kitchen extends State {
 
 	public TheState choice(int choice) {
 		if (choice == 1) {
-			return TheState.Save;
+			return TheState.Kitchen;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.CabinLivingRoom);
 			return TheState.CabinLivingRoom;
 		}
 
 		if (choice == 3) {
 			if (getModel().getHasMap() == false) {
 				getModel().setHasMap(true);
-				getModel().setCurrentState(TheState.Kitchen);
+				
 				return TheState.Kitchen;
 			}
 			if (getModel().getHasMap() == true) {
 				getModel().setHasSnowmobileKey(true);
-				;
-				getModel().setCurrentState(TheState.Kitchen);
+				
 				return TheState.Kitchen;
 			}
 		}
 		if (choice == 4 && getModel().getHasSnowmobileKey() == false) {
 			getModel().setHasSnowmobileKey(true);
-			getModel().setCurrentState(TheState.Kitchen);
 			return TheState.Kitchen;
 
 		}
@@ -62,7 +59,7 @@ public class Kitchen extends State {
 			message.add("You see a map setting on the counter.");
 		}
 		if (getModel().getHasSnowmobileKey() == false) {
-			message.add("There are keys hanging on the wall. ");
+			message.add("There are keys hanging on the wall.");
 		}
 
 		if (getModel().getHasMap() == true && getModel().getHasSnowmobileKey() == true) {

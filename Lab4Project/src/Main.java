@@ -28,14 +28,14 @@ public class Main {
 					System.out.println(
 							"It had been his life dream to go on this trip, and it was your dream to make it happen.");
 					System.out.println(
-							"However, the dream quickly turned into a nightmare. Less than a mile away from the airport you were ");
+							"However, the dream quickly turned into a nightmare. Less than a mile away from the airport, ");
 					System.out.println(
-							"supposed to land at, your plane hit heavy turbulence and created strucural damage to the wings.");
+							"your plane hit heavy turbulence and created strucural damage to the wings.");
 					System.out.println(
 							"Before you knew it, the plane was falling quickly. The pilot told you and your dad to strap in.");
 					System.out.println("The last thing you remember before impact was the look on your father's face.");
 					System.out.println(
-							"You woke up hours later. Your father was dead. You called out for help but got no response.");
+							"You wake up hours later. Your father is dead. You called out for help and get no response.");
 					System.out.println(
 							"You're all alone, stuck in the Alaskan wilderness. You spend some time sulking before ");
 					System.out.println("realizing your father would want you to be strong and survive.");
@@ -89,68 +89,74 @@ public class Main {
 		TheState currentState = model.getCurrentState();
 		
 		
-		while (!currentState.equals(TheState.Solved)) {
+		while (!model.getCurrentState().equals(TheState.Solved) && !model.getCurrentState().equals(TheState.Save))  {
 
-			if (currentState.equals(TheState.MiddlePlane)) {
+			if (model.getCurrentState().equals(TheState.MiddlePlane)) {
 
-				currentState = makeMove(states[0], model);
-
-			}
-
-			if (currentState.equals(TheState.CockPit)) {
-
-				currentState = makeMove(states[1], model);
-
-			}
-			if (currentState.equals(TheState.OutsidePlane)) {
-				currentState = makeMove(states[2], model);
-
-			}
-			if (currentState.equals(TheState.CabinPorch)) {
-				currentState = makeMove(states[3], model);
-
-			}
-			if (currentState.equals(TheState.SnowMobile)) {
-				currentState = makeMove(states[4], model);
-
-			}
-			if (currentState.equals(TheState.CabinLivingRoom)) {
-				currentState = makeMove(states[5], model);
-
-			}
-			if (currentState.equals(TheState.WoodPile)) {
-				currentState = makeMove(states[6], model);
-
-			}
-			if (currentState.equals(TheState.Kitchen)) {
-				currentState = makeMove(states[7], model);
+				model.setCurrentState(makeMove(states[0], model));
 
 			}
 
-			if (currentState.equals(TheState.Bedroom)) {
-				currentState = makeMove(states[8], model);
+			if (model.getCurrentState().equals(TheState.CockPit)) {
+
+				model.setCurrentState(makeMove(states[1], model));
+
+			}
+			if (model.getCurrentState().equals(TheState.OutsidePlane)) {
+				model.setCurrentState(makeMove(states[2], model));
+
+			}
+			if (model.getCurrentState().equals(TheState.CabinPorch)) {
+				model.setCurrentState(makeMove(states[3], model));
+			}
+			if (model.getCurrentState().equals(TheState.SnowMobile)) {
+				model.setCurrentState(makeMove(states[4], model));
+
+			}
+			if (model.getCurrentState().equals(TheState.CabinLivingRoom)) {
+				model.setCurrentState(makeMove(states[5], model));
+
+			}
+			if (model.getCurrentState().equals(TheState.WoodPile)) {
+				model.setCurrentState(makeMove(states[6], model));
+
+			}
+			if (model.getCurrentState().equals(TheState.Kitchen)) {
+				model.setCurrentState(makeMove(states[7], model));
 
 			}
 
-			if (currentState.equals(TheState.MainRoad)) {
+			if (model.getCurrentState().equals(TheState.Bedroom)) {
+				model.setCurrentState(makeMove(states[8], model));
+
+
+			}
+
+			if (model.getCurrentState().equals(TheState.MainRoad)) {
 				states[9].setMessage(states[9].getMessage());
 				View view = new View(states[9]);
 				view.printCurrentMessage();
-				currentState = TheState.Solved;
+				model.setCurrentState(TheState.Solved);
+
 			}
 
-			if (currentState.equals(TheState.OffRoad)) {
+			if (model.getCurrentState().equals(TheState.OffRoad)) {
 				states[10].setMessage(states[10].getMessage());
 				View view = new View(states[10]);
 				view.printCurrentMessage();
-				currentState = TheState.Solved;
+				model.setCurrentState(TheState.Solved);
 
 			}
 
 		}
-		System.out.println("out of loop");
-		System.out.println(model.getCurrentState());
-
+		if(model.getCurrentState().equals(TheState.Save)) {
+			System.out.println("Game saved");
+		}
+		if(model.getCurrentState().equals(TheState.Solved)) {
+			System.out.println("Thanks for playing!");
+		}
+	
+	
 	}
 
 	
@@ -164,7 +170,7 @@ public class Main {
 		int answer = input(1, state.getMenu().size());
 		if (answer == 1) {
 			writeFile(model);
-			return TheState.Solved;
+			return TheState.Save;
 		}
 
 		TheState currentState = state.choice(answer);

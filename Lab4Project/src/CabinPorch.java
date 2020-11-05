@@ -12,21 +12,18 @@ public class CabinPorch extends State {
 			return TheState.CabinPorch;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.OutsidePlane);
+			
 			return TheState.OutsidePlane;
 
 		}
 		if (choice == 3) {
-			getModel().setCurrentState(TheState.SnowMobile);
 			return TheState.SnowMobile;
 		}
 		if (choice == 4 && getModel().getHasHatchet() == true) {
-			getModel().setCurrentState(TheState.CabinLivingRoom);
 			getModel().setDoorBroken(true);
 			return TheState.CabinLivingRoom;
 		}
 		if (choice == 5) {
-			getModel().setCurrentState(TheState.WoodPile);
 
 			return TheState.WoodPile;
 
@@ -53,14 +50,12 @@ public class CabinPorch extends State {
 			message.add("You try to open the door. It is locked.");
 
 			message.add("You check the porch for a key, however you can't find one.");
-			if (getModel().getHasHatchet() == false) {
-				message.add("You think of new ways to get into the house.");
-			}
+			
 		}
 		if (getModel().getDoorKnock() == true && getModel().getDoorBroken() == false) {
 
 			if (getModel().getHasHatchet() == false) {
-				message.add("You're on the porch.Still nobody answers the door. You think of ways to get in.");
+				message.add("Still nobody answers the cabin door. You think of ways to get in. Force may be a good option");
 
 			}
 

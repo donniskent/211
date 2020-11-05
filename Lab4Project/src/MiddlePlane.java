@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class MiddlePlane extends State {
-
+	
 	public MiddlePlane(Model model) {
 		super(model);
 
@@ -14,12 +14,12 @@ public class MiddlePlane extends State {
 			return TheState.MiddlePlane;
 		}
 		if (choice == 2 && (getModel().getDoorKeys() == true)) {
-			getModel().setCurrentState(TheState.OutsidePlane);
+			getModel().setOpenDoor(true);
 			return TheState.OutsidePlane;
 
 		}
 		if (choice == 3) {
-			getModel().setCurrentState(TheState.CockPit);
+
 			return TheState.CockPit;
 		}
 
@@ -42,9 +42,14 @@ public class MiddlePlane extends State {
 		if (getModel().getDoorKeys() == false) {
 			message.add("The door leading outside is locked");
 		}
-		if (getModel().getDoorKeys() == true) {
+		if (getModel().getDoorKeys() == true && getModel().getOpenDoor() == false) {
 			message.add("With the keys in your hand, you can unlock the door. ");
 		}
+	
+	
+	
 	}
+
+	
 
 }

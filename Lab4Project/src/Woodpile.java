@@ -9,31 +9,31 @@ public class Woodpile extends State {
 
 	TheState choice(int choice) {
 		if (choice == 1) {
-			getModel().setCurrentState(TheState.WoodPile);
+			
 			return TheState.WoodPile;
 		}
 		if (choice == 2) {
-			getModel().setCurrentState(TheState.OutsidePlane);
+			
 			return TheState.OutsidePlane;
 		}
 		if (choice == 3) {
-			getModel().setCurrentState(TheState.CabinPorch);
+			
 			return TheState.CabinPorch;
 		}
 		if (choice == 4) {
-			getModel().setCurrentState(TheState.SnowMobile);
+			
 			return TheState.SnowMobile;
 		}
 
 		if (choice == 5) {
 			if (getModel().getHasHatchet() == false) {
 				getModel().setHasHatchet(true);
-				getModel().setCurrentState(TheState.WoodPile);
+				
 				return TheState.WoodPile;
 			}
 			if (getModel().getHasHatchet() == true) {
 				getModel().setHasGas(true);
-				getModel().setCurrentState(TheState.WoodPile);
+				
 				return TheState.WoodPile;
 			}
 
@@ -41,7 +41,6 @@ public class Woodpile extends State {
 
 		if (choice == 6 && getModel().getHasHatchet() == false) {
 			getModel().setHasGas(true);
-			getModel().setCurrentState(TheState.WoodPile);
 			return TheState.WoodPile;
 		}
 
