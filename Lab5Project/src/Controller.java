@@ -53,14 +53,24 @@ public class Controller {
 		
 		
 		Graph graph = new Graph(4);
-		graph.setEdgeValue(0,0,1);
+		graph.setEdgeValue(0,1,1);
+		graph.setEdgeValue(0,3,1);
 		graph.setEdgeValue(1,2,1);
-		graph.setEdgeValue(2,1,1);
-		graph.setEdgeValue(3,0,1);
+		graph.setEdgeValue(2,0,1);
+		graph.setEdgeValue(2,3,1);
 		graph.setEdgeValue(3,1,1);
+		ArrayList<Integer> unvisitedNodes = new ArrayList<Integer>();
+		for(int i = 1; i < graph.getVertices(); i++) {
+			unvisitedNodes.add(i);
+		}
 		
 		
 		
+		
+		
+		
+		int b = graph.solve(0, unvisitedNodes);
+		System.out.println(b);
 		
 		
 		

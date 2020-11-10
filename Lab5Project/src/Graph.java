@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Graph {
 	private int[][] graph;
@@ -13,9 +14,6 @@ public class Graph {
 	
 	public int getVertices() {
 		return vertices;
-	}
-	public void setVertices(int vertices) {
-		this.vertices = vertices;
 	}
 
 	public void setEdgeValue(int row, int col, int value) {
@@ -38,29 +36,83 @@ public class Graph {
 			}
 		}
 	}
-
-	// recurisive method 
-	// start at (0,0), try to go +1, then plus 2, then plus 3 etc etc. 
-	//
-	// lay mans terms. start at vertex 1. check its connections. follow the one that is closest. 
-	// same thing (but dont go backwards unless there is dead end.)
-	public void solve() {
+	public ArrayList<Integer> edgesFrom(int node) {
+		ArrayList<Integer> total = new ArrayList<Integer>();
+		for(int i = 0; i < graph[node].length; i++) {
+			if(graph[node][i] == 1) {
+				total.add(i);
+			}
+		}
+		return total; 
 		
-		// base case 1 :
-		// the graph is solved (all nodes have been  visited)
+	}
+	
+	
+	
+	
+	
+	//   row                  column
+	public int solve(int currentNode, ArrayList<Integer> unvisitedNodes) {
 		
-		// base case 2: 
-		// reached a dead end and cant get to other nodes. 
+		// need an arraylist of all the nodes the current node connects to 
+		ArrayList<Integer> edges = edgesFrom(currentNode);
 		
-		// general case:
-		// start at node. check its edges. 
-		// follow the next highest edge (if at 1 and connected to 3 5 7, go for 3 first) 
-		// this is the new starting point for new call of the method. 
+		
+		
+		// removes all the nodes that are able to be visited from current node
+		for(int i = 0; i < edges.size(); i ++) {
+			if(unvisitedNodes.contains(edges.get(i))) {
+				unvisitedNodes.remove(edges.get(i));
+			}
+		}
+		
+		
+		
+		
+		
+		// base case 1 
+		// unvisitedNodes is empty. 
+		// return 1 
+		if(unvisitedNodes.isEmpty()) {
+			 return 1;
+		}
+		
+		
+		
+		
+		
+		// base case 2
+		// no edges from current node to unvisited node(s), nowhere to back track to.  
+		// return 0 
+		if(edges.isEmpty()) {
+			return 0; 
+		}
+		
+		
+		
+		
+		
+		// general case: 
+			
+			int result = solve(edges.get(0), unvisitedNodes);
+			if(result == 0 && edges.size() > 1) {
+				edges.remove(0);
+			result = solve(edges.get(0), unvisitedNodes);
+			}
+		return result;
+		
+		
+		
+		
+		
+		
 		
 		
 		
 		
 	}
+	
+	
 
 
 
