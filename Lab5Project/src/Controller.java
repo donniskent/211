@@ -18,50 +18,68 @@ public class Controller {
 		// maybe put values into an array list, clear the array list after getting recursive function answer
 		//
 		
-	/*	File directory = readDirectory();
+		File directory = readDirectory();
 	// have to pull the first file in the directory and read in its values. 
 		File [] allFiles = directory.listFiles();
-		ArrayList<Integer> list;
+		String[] strings;
+		int count = 0;
 		
 		
-		for(int i = 0; i < allFiles.length; i++) {
-			// i establishes the file 
-			// now need to take a look at whats in the file 
+		for(int k = 0; k < allFiles.length ; k++) {
+		try {	
+			Scanner scan = new Scanner(allFiles[k]);
+			int numNodes = scan.nextInt();
+			strings = new String[numNodes];  // gets how many nodes there are 
+			Graph graph = new Graph(numNodes);
+			scan.nextLine();
+			while(scan.hasNextLine()) {
+				strings[count] = scan.nextLine();
+			count++;
+			}
 			
 			
+			for(int n = 0; n < strings.length; n++) {
+				Scanner stringScan = new Scanner(strings[n]);
+				while (stringScan.hasNextInt()) {
+					graph.setEdgeValue(n, stringScan.nextInt(), 1);
+					}
+			
+			}
+			ArrayList<Integer> visitedNodes = new ArrayList<Integer>();
+			
+			
+			ArrayList<Integer> queue = new ArrayList<Integer>();
+			queue.add(0);
+			
+			
+				
+			
+			
+				boolean result = graph.solve(queue, visitedNodes);
+				System.out.print("File " + k + " result is ");
+			if(result == true) {
+				System.out.print("solvable");
+			}
+			else {
+				System.out.print("unsolvable");
+			}
+			
+			System.out.println("");
 			
 			
 		
-			
-			
-			*/
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		//	System.out.println(i);
-			
 		
 		
 		
-		Graph graph = new Graph(4);
-		graph.setEdgeValue(0,1,1);
-		graph.setEdgeValue(0,3,1);
-		graph.setEdgeValue(1,2,1);
-		graph.setEdgeValue(2,0,1);
-		graph.setEdgeValue(2,3,1);
-		graph.setEdgeValue(3,1,1);
-		ArrayList<Integer> unvisitedNodes = new ArrayList<Integer>();
-		for(int i = 1; i < graph.getVertices(); i++) {
-			unvisitedNodes.add(i);
+		
+		
+		
+		
+		
+		}
+		catch (Exception e ) {
+			System.out.println("Problem reading a file in the directory.");
+			
 		}
 		
 		
@@ -69,31 +87,13 @@ public class Controller {
 		
 		
 		
-		int b = graph.solve(0, unvisitedNodes);
-		System.out.println(b);
+		
+		
+		count = 0;
 		
 		
 		
-		
-		
-		
-		// 1. input the directory 
-		// 2. scan a single file 
-		// 3. call recursive methods on the scanned ints 
-		// 4. return whether the file is solvable or not 
-		// 5. must establish separate graphs for each file 
-		// 6. the constructor for each graph must consider the # of vertices, edges and specific paths
-		// this can be accomplished through the use of a 2D array 
-		
-		
-		// brain storm for what to do with file 
-		// 1. need to initialize the size of the double array based on the first int (n) on line "0"
-		// 2. Subsequent lines (1,2, 3, 4....n) are used to place values in the array. 
-		// 3. If the line has a value, then the index at row "current line" column "value" is 1. 
-		// More numbers in a file row means more "1's" in the matrix.
-		// 4. Once the file is out of lines, which will be equal to the matrix height + 1, 
-		// all vlaues are fully read in. At this point, the reursive method is called on the matrix, 
-		// returning a string that reveals "solvable" or " not solvable". 
+		}
 		
 		
 		
@@ -103,21 +103,37 @@ public class Controller {
 		
 		
 		
-		// get directory 
-		//
-		// while ( directory still has files ) {
-		//   scan file
-		//  Initialize graph [][] with number of vertices from file
-		//   while ( file has next int) {
-		//	 
-		//   
-		//
-		//        }
-		//
-		//
-		//
-		//
-		//
+		
+	/*
+		Graph graph = new Graph(2);
+		graph.setEdgeValue(0, 1, 1);
+
+		
+		
+		
+		int count = 0;
+		boolean result;
+		
+		
+		ArrayList<Integer> unvisitedNodes = new ArrayList<Integer>();
+		
+		
+		ArrayList<Integer> queue = new ArrayList<Integer>();
+		queue.add(0);
+		
+		
+		
+		result = graph.solve(queue, unvisitedNodes);
+		
+		
+		
+		System.out.println(result);
+		
+		
+		
+		
+		
+		*/
 	
 	
 	}

@@ -36,81 +36,67 @@ public class Graph {
 			}
 		}
 	}
-	public ArrayList<Integer> edgesFrom(int node) {
-		ArrayList<Integer> total = new ArrayList<Integer>();
-		for(int i = 0; i < graph[node].length; i++) {
-			if(graph[node][i] == 1) {
-				total.add(i);
-			}
-		}
-		return total; 
-		
-	}
 	
 	
-	
-	
-	
-	//   row                  column
-	public int solve(int currentNode, ArrayList<Integer> unvisitedNodes) {
-		
-		// need an arraylist of all the nodes the current node connects to 
-		ArrayList<Integer> edges = edgesFrom(currentNode);
-		
-		
-		
-		// removes all the nodes that are able to be visited from current node
-		for(int i = 0; i < edges.size(); i ++) {
-			if(unvisitedNodes.contains(edges.get(i))) {
-				unvisitedNodes.remove(edges.get(i));
-			}
-		}
-		
-		
-		
-		
-		
-		// base case 1 
-		// unvisitedNodes is empty. 
-		// return 1 
-		if(unvisitedNodes.isEmpty()) {
-			 return 1;
-		}
-		
-		
-		
-		
-		
-		// base case 2
-		// no edges from current node to unvisited node(s), nowhere to back track to.  
-		// return 0 
-		if(edges.isEmpty()) {
-			return 0; 
-		}
-		
-		
-		
-		
-		
-		// general case: 
+	private ArrayList<Integer> nodeList(int current) {
+		ArrayList<Integer> queue = new ArrayList<Integer>();
+		for(int col = 0; col < vertices; col ++) {
 			
-			int result = solve(edges.get(0), unvisitedNodes);
-			if(result == 0 && edges.size() > 1) {
-				edges.remove(0);
-			result = solve(edges.get(0), unvisitedNodes);
+			if(graph[current][col] == 1) {
+				queue.add(col);
 			}
-		return result;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		}
+		return queue;
+	
+	
 	}
+	
+	
+	
+	
+	
+	// queue top = 0                    queue bottom = queue.size -1
+	public boolean solve(ArrayList<Integer> queue, ArrayList<Integer> VisitedNodes) {
+		// breadth first, start by popping the queue, this will be currentNode
+		
+		// grab the front of the queue, this is currentNode
+		int currentNode = queue.get(0);
+		queue.remove(0);
+		
+		// add the adjacent vertices to the queue
+		for(int i = 0; i < nodeList(currentNode).size(); i++) {
+			queue.add(nodeList(currentNode).get(i));       // puts the adjacent nodes into the queue
+		}
+		if(!VisitedNodes.contains(currentNode)) {
+		VisitedNodes.add(currentNode);}
+		
+		
+		
+		// base case 1: visited nodes = vertices (have to make sure duplicates arent added to visited nodes
+	if(VisitedNodes.size() == vertices) {
+		return true;
+	}
+		
+		// base case 2: queue is empty but not all vertices have been reached 
+	if(queue.size() == 0 && (VisitedNodes.size() < vertices)) {
+		return false;
+	}	
+	
+	
+	
+	if(queue.size() == 1 && VisitedNodes.contains(queue.get(0)))
+	return false;
+		// general: 
+		
+		return solve(queue, VisitedNodes);
+		
+		
+		
+		
+		
+		
+		
+}
 	
 	
 
