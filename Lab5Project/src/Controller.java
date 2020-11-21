@@ -42,8 +42,9 @@ public class Controller {
 
 				}
 				ArrayList<Integer> visitedNodes = new ArrayList<Integer>();
-				for(int i = 0; i < graph.getVertices(); i ++) {
 				ArrayList<Integer> queue = new ArrayList<Integer>();
+				for(int i = 0; i < graph.getVertices(); i ++) {   
+				//ArrayList<Integer> queue = new ArrayList<Integer>();
 				queue.add(i);
 
 				boolean result = graph.solve(queue, visitedNodes);
@@ -69,7 +70,6 @@ public class Controller {
 
 	}
 
-	
 	
 	
 	

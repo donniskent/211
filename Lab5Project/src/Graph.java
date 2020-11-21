@@ -25,7 +25,7 @@ public class Graph {
 		return graph[row][col];
 	}
 
-	public void setInitialGraph() {
+	private void setInitialGraph() {
 		for (int i = 0; i < vertices; i++) {
 			for (int j = 0; j < vertices; j++) {
 
