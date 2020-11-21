@@ -34,7 +34,7 @@ public class GraphTest {
 			fail("Value at (2,0) should be 0. Got" + graph.getEdgeValue(2, 0));
 		}
 	
-	
+	 
 	}
 	@Test
 	public void solveTest() {

@@ -10,7 +10,7 @@ public class Graph {
 		graph = new int[vertices][vertices];
 		setInitialGraph();
 
-	}
+	} 
 
 	public int getVertices() {
 		return vertices;
