@@ -49,7 +49,7 @@ public class GraphTest {
 		if(graph.solve(queue, visitedNodes) == false) {
 			fail("Expected true when node is 0");
 		}
-		queue.clear();
+		queue.clear(); 
 		queue.add(1);
 		visitedNodes.clear();
 		
